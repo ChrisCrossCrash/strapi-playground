@@ -1,0 +1,43 @@
+env:
+  browser: true
+  es2021: true
+  node: true
+extends:
+  - eslint:recommended
+  - plugin:@typescript-eslint/recommended
+  - prettier
+parser: '@typescript-eslint/parser'
+parserOptions:
+  ecmaVersion: latest
+  sourceType: module
+plugins:
+  - '@typescript-eslint'
+ignorePatterns:
+  - node_modules
+  - /.cache/
+  - /.tmp/
+  - /dist/
+rules:
+  # Warn if there are still TODO or FIXME comments in the codebase.
+  no-warning-comments: warn
+
+  # We don't want console logs littered throughout the codebase.
+  no-console: warn
+
+  # We shouldn't have any "debugger" statements in the codebase.
+  no-debugger: warn
+
+  # Don't warn about unused parameters in functions definitions
+  # as long as they start with an underscore.
+  no-unused-vars:
+    - error
+    - argsIgnorePattern: '^_'
+
+overrides:
+  - files:
+      - '*.ts'
+      - '*.mts'
+      - '*.cts'
+      - '*.tsx'
+    rules:
+      no-undef: 'off'
