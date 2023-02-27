@@ -1,5 +1,3 @@
 export default ({ env }) => {
-  return {
-    ckeditor: true,
-  };
+  return {};
 };
